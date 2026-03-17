@@ -1,0 +1,17 @@
+yfinance
+pandas
+sec-edgar-downloader
+sqlalchemy
+psycopg2-binary
+scikit-learn
+xgboost
+shap
+torch
+transformers
+python-dotenv
+numpy
+requests
+pypdf
+matplotlib
+jupyter
+ipykernel
