@@ -1,201 +1,121 @@
-# FEATURES.md
+# Features
 
-This reference intentionally covers **only the 69 post-pruned features** used in the final main model/report.
+69 features after pruning. One row per filing event (`ticker + accession + filed_date`).
 
-Source of truth: `docs/FEATURE_PRUNING_BUCKETS.csv` (`bucket=keep`).
+SHAP rankings below are from the 20D Big Move XGBoost classifier (the strongest model). Full ranking in `docs/MAIN_TRAIN_EVAL_SHAP_FULL.csv`.
 
-## Row granularity
+---
 
-One row per filing event (`ticker` + `accession` + `filed_date`).
+## Market / Technical (17 features)
 
-## Post-pruned feature set (69)
+The two most important features in the entire model are in this group. `stock_vol_20d` and `distance_to_52w_high` together account for more SHAP contribution than any other family — stocks that are volatile and far from their highs are more likely to make big post-filing moves.
 
-- `acceleration_net_income`
-- `acceleration_net_income_slog`
-- `acceleration_revenue_slog`
-- `avg_text_score`
-- `cogs_margin`
-- `debt`
-- `debt_to_assets_proxy`
-- `debt_to_gross_profit`
-- `distance_to_52w_high`
-- `earnings_yield`
-- `equity`
-- `equity_to_assets_proxy`
-- `etf_momentum_60d`
-- `etf_relative_strength_20d`
-- `etf_relative_strength_60d`
-- `etf_vol_20d`
-- `filing_length_surprise`
-- `filing_month`
-- `gross_margin`
-- `gross_margin_change_yoy`
-- `gross_profit`
-- `gross_profit_growth_yoy`
-- `gross_profit_margin`
-- `interaction_growth_volatility`
-- `interaction_profitability_momentum`
-- `inventory`
-- `inventory_growth_qoq`
-- `inventory_growth_yoy`
-- `inventory_intensity`
-- `inventory_to_equity`
-- `log_dollar_volume_20d`
-- `log_market_cap`
-- `margin_surprise_proxy`
-- `market_stress_proxy`
-- `net_income`
-- `net_income_growth_qoq`
-- `net_income_growth_qoq_slog`
-- `net_income_growth_yoy`
-- `net_income_growth_yoy_slog`
-- `net_margin`
-- `pre_event_runup_10d`
-- `pre_event_runup_5d`
-- `pre_event_runup_60d`
-- `price_to_sales`
-- `relative_strength_20d`
-- `relative_strength_60d`
-- `revenue_change_qoq`
-- `revenue_change_yoy`
-- `revenue_change_yoy_slog`
-- `sales_inventory`
-- `sector_regime_20d`
-- `sentiment_change_qoq`
-- `sgna`
-- `sgna_growth_qoq`
-- `sgna_growth_yoy`
-- `sgna_margin`
-- `spy_drawdown_252d`
-- `spy_momentum_20d`
-- `spy_momentum_60d`
-- `spy_vol_20d`
-- `spy_vol_regime_5d_60d`
-- `stock_20d_excess_return`
-- `stock_beta_252d`
-- `stock_drawdown_60d`
-- `stock_momentum_20d`
-- `stock_momentum_60d`
-- `stock_vol_20d`
-- `turnover_20d`
-- `vol_ratio`
+| Feature | What it is |
+|---|---|
+| `stock_vol_20d` | Annualized 20-day trailing volatility of the stock. **SHAP #1.** |
+| `distance_to_52w_high` | `close / 52-week high - 1`. Always ≤ 0. **SHAP #2.** |
+| `spy_momentum_20d` | SPY compound return over trailing 20 days. **SHAP #7.** |
+| `etf_relative_strength_20d` | Sector ETF 20d return minus SPY 20d return. **SHAP #8.** |
+| `relative_strength_60d` | Stock 60d return minus SPY 60d return. **SHAP #9.** |
+| `etf_momentum_60d` | Sector ETF compound return over trailing 60 days. |
+| `etf_relative_strength_60d` | Sector ETF 60d return minus SPY 60d return. |
+| `relative_strength_20d` | Stock 20d return minus SPY 20d return. |
+| `spy_momentum_60d` | SPY compound return over trailing 60 days. |
+| `spy_vol_20d` | Annualized 20-day trailing volatility of SPY. |
+| `stock_20d_excess_return` | Stock 20d return minus SPY 20d return (same as `relative_strength_20d`). |
+| `stock_beta_252d` | Rolling 252-day beta vs SPY. |
+| `stock_drawdown_60d` | Max drawdown of the stock over trailing 60 days. |
+| `stock_momentum_20d` | Stock compound return over trailing 20 days. |
+| `stock_momentum_60d` | Stock compound return over trailing 60 days. |
+| `turnover_20d` | Average daily share volume over trailing 20 days. |
+| `vol_ratio` | `stock_vol_20d / spy_vol_20d`. Relative volatility. |
 
-## Plain-language notes for key engineered features
+## Fundamental (22 features)
 
-- `acceleration_revenue_slog`: smoothed revenue acceleration signal (short-term vs long-term growth behavior).
-- `acceleration_net_income`: near-term net-income trend minus longer-run trend; positive implies earnings momentum improving.
-- `margin_surprise_proxy`: current gross-margin change vs its longer-run pattern; positive implies better-than-trend margin shift.
-- `inventory_buildup` is **not** in the post-pruned 69 and is intentionally excluded from final-model docs.
-- `operating_leverage_proxy` is **not** in the post-pruned 69 and is intentionally excluded from final-model docs.
+Profitability and size features dominate here. Larger, more profitable companies are less likely to make big post-filing moves — they're better covered and their filings contain fewer surprises.
 
-## Targets used in modeling
+| Feature | What it is |
+|---|---|
+| `net_income` | Net income from the filing. **SHAP #3.** |
+| `equity` | Total shareholders' equity. **SHAP #4.** |
+| `net_margin` | `net_income / revenue`. **SHAP #6.** |
+| `gross_margin_change_yoy` | YoY change in gross margin. **SHAP #17.** |
+| `revenue_change_yoy` | YoY revenue growth rate. |
+| `inventory_to_equity` | `inventory / equity`. |
+| `net_income_growth_qoq` | QoQ net income growth. |
+| `revenue_change_qoq` | QoQ revenue growth rate. |
+| `debt_to_gross_profit` | `debt / gross_profit`. |
+| `gross_margin` | `(revenue - cogs) / revenue`. |
+| `gross_profit` | `revenue - cogs`. |
+| `gross_profit_growth_yoy` | YoY gross profit growth. |
+| `gross_profit_margin` | Same as `gross_margin` (kept for legacy reasons). |
+| `cogs_margin` | `cogs / revenue`. |
+| `debt` | Total debt from the filing. |
+| `debt_to_assets_proxy` | `debt / (debt + equity)`. |
+| `earnings_yield` | Inverse of P/E, roughly. |
+| `equity_to_assets_proxy` | `equity / (debt + equity)`. |
+| `inventory` | Inventory from the filing. |
+| `inventory_growth_qoq` | QoQ inventory growth. |
+| `inventory_growth_yoy` | YoY inventory growth. |
+| `inventory_intensity` | Inventory relative to revenue. |
 
-Targets are built in `modeling/train_eval.py:add_targets` from forward post-filing returns:
+Plus: `acceleration_net_income`, `acceleration_net_income_slog`, `acceleration_revenue_slog` (momentum-of-momentum signals), `margin_surprise_proxy` (gross margin change vs its own trend), `net_income_growth_qoq_slog`, `net_income_growth_yoy`, `net_income_growth_yoy_slog`, `price_to_sales`, `revenue_change_yoy_slog`, `sales_inventory`, `sgna`, `sgna_growth_qoq`, `sgna_growth_yoy`, `sgna_margin`.
 
-- `target_excess_{h}d = forward_stock_return(h) - forward_spy_return(h)`
-- `target_cls_up_{h}d = 1[target_excess_{h}d > 0]`
-- `target_mag_abs_excess_{h}d = abs(target_excess_{h}d)`
-- `target_big_move_{h}d` = big absolute excess move classifier
-- `target_pos_surprise_{h}d`, `target_neg_surprise_{h}d`
-- `target_rank_pct_{h}d`, `target_quintile_{h}d`
-- `target_vol_expansion_10d`
+The `_slog` suffix means signed-log transform: `sign(x) * log(1 + |x|)`. Compresses outliers in growth rates.
 
-Main report (`modeling/train_eval_main.py`) emphasizes 20D tasks:
-- Direction AUC: `target_cls_up_20d`
-- Big Move AUC: `target_big_move_20d`
-- Magnitude R²: `target_mag_abs_excess_20d`
-- Decile check: `target_cls_up_20d` scores vs realized `target_excess_20d`
+## Text / NLP (23 features)
 
-## Feature family list (used in SHAP-family charts)
+These come from running FinBERT over MD&A and Risk Factors sections of each filing. The text features matter more for the Big Move and Magnitude tasks than for Direction (see the SHAP family chart in the README).
 
-### Text / NLP
-- `avg_text_score`
-- `filing_length_surprise`
-- `sentiment_change_qoq`
-- `score_std_mean`
-- `score_std_max`
-- `positive_count_total`
-- `negative_count_total`
-- `neutral_count_total`
-- `positive_ratio`
-- `negative_ratio`
-- `neutral_ratio`
-- `sentiment_polarity`
-- `section_count`
-- `num_units_total`
-- `units_per_section`
+| Feature | What it is |
+|---|---|
+| `sentiment_polarity` | `positive_ratio - negative_ratio` across all scored sections. **SHAP #16.** |
+| `negative_count_total` | Total negative-sentiment sentence count. **SHAP #18.** |
+| `avg_text_score` | Mean FinBERT sentiment score across all sections. **SHAP #24.** |
+| `score_std_mean` | Mean within-section sentiment standard deviation. Captures mixed-signal filings. |
+| `score_std_max` | Max within-section sentiment standard deviation. |
+| `sentiment_change_qoq` | Change in `avg_text_score` from prior filing. |
+| `filing_length_surprise` | Filing length vs form-type average (z-scored). |
+| `positive_ratio` | Share of sentences classified as positive. |
+| `negative_ratio` | Share of sentences classified as negative. |
+| `neutral_ratio` | Share of sentences classified as neutral. |
+| `positive_count_total` | Total positive-sentiment sentence count. |
+| `neutral_count_total` | Total neutral-sentiment sentence count. |
+| `num_units_total` | Total scored text units (sentences) in the filing. |
+| `units_per_section` | `num_units_total / section_count`. |
+| `section_count` | Number of distinct sections scored. |
 
-### Fundamental
-- `acceleration_net_income`
-- `acceleration_net_income_slog`
-- `acceleration_revenue_slog`
-- `cogs_margin`
-- `debt`
-- `debt_to_assets_proxy`
-- `debt_to_gross_profit`
-- `earnings_yield`
-- `equity`
-- `equity_to_assets_proxy`
-- `gross_margin`
-- `gross_margin_change_yoy`
-- `gross_profit`
-- `gross_profit_growth_yoy`
-- `gross_profit_margin`
-- `inventory`
-- `inventory_growth_qoq`
-- `inventory_growth_yoy`
-- `inventory_intensity`
-- `inventory_to_equity`
-- `margin_surprise_proxy`
-- `net_income`
-- `net_income_growth_qoq`
-- `net_income_growth_qoq_slog`
-- `net_income_growth_yoy`
-- `net_income_growth_yoy_slog`
-- `net_margin`
-- `price_to_sales`
-- `revenue_change_qoq`
-- `revenue_change_yoy`
-- `revenue_change_yoy_slog`
-- `sales_inventory`
-- `sgna`
-- `sgna_growth_qoq`
-- `sgna_growth_yoy`
-- `sgna_margin`
+Plus form-type z-scored variants (`_form_z` suffix) for: `score_std_mean`, `score_std_max`, `positive_ratio`, `negative_ratio`, `neutral_ratio`, `sentiment_polarity`, `num_units_total`, `units_per_section`, `section_count`.
 
-### Market / Technical
-- `distance_to_52w_high`
-- `log_dollar_volume_20d`
-- `log_market_cap`
-- `pre_event_runup_10d`
-- `pre_event_runup_5d`
-- `pre_event_runup_60d`
-- `relative_strength_20d`
-- `relative_strength_60d`
-- `spy_drawdown_252d`
-- `spy_momentum_20d`
-- `spy_momentum_60d`
-- `spy_vol_20d`
-- `stock_20d_excess_return`
-- `stock_beta_252d`
-- `stock_drawdown_60d`
-- `stock_momentum_20d`
-- `stock_momentum_60d`
-- `stock_vol_20d`
-- `turnover_20d`
-- `vol_ratio`
+The form-type z-score normalizes each feature relative to its 10-K or 10-Q distribution, since filing structure differs systematically between the two form types.
 
-### Sector / Regime
-- `etf_momentum_60d`
-- `etf_relative_strength_20d`
-- `etf_relative_strength_60d`
-- `etf_vol_20d`
-- `market_stress_proxy`
-- `sector_regime_20d`
+## Sector / Regime (6 features)
 
-### Interaction / Seasonality
-- `filing_month`
-- `interaction_growth_volatility`
-- `interaction_profitability_momentum`
+| Feature | What it is |
+|---|---|
+| `etf_vol_20d` | Sector ETF annualized 20-day vol. |
+| `market_stress_proxy` | Composite market stress indicator. |
+| `sector_regime_20d` | Sector momentum regime classification. |
+| `log_dollar_volume_20d` | `log(1 + avg daily dollar volume)`. Liquidity proxy. |
+| `log_market_cap` | `log(1 + market cap)`. Size proxy. |
+| `spy_drawdown_252d` | SPY max drawdown over trailing 252 days. |
 
-**Note:** Family assignment follows the same keyword-based grouping logic used by the chart script (`modeling/generate_charts.py`).
+## Interaction / Seasonality (3 features)
+
+| Feature | What it is |
+|---|---|
+| `filing_month` | Calendar month of the filing date (1–12). |
+| `interaction_growth_volatility` | Revenue growth × stock volatility cross-term. |
+| `interaction_profitability_momentum` | Net margin × stock momentum cross-term. |
+
+---
+
+## Targets
+
+All targets are computed from *forward* returns starting the day after `filed_date`. Excess = stock minus SPY over the same window.
+
+| Target | Definition | Task |
+|---|---|---|
+| `target_cls_up_20d` | 1 if 20d excess return > 0 | Direction (classification) |
+| `target_big_move_20d` | 1 if \|20d excess return\| > 5% | Big Move (classification) |
+| `target_mag_abs_excess_20d` | \|20d excess return\| | Magnitude (regression) |

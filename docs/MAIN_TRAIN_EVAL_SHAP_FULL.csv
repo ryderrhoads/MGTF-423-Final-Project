@@ -1,71 +1,71 @@
 rank,feature,mean_abs_shap,corr_feature_shap,interpretation,group
-1,distance_to_52w_high,0.19653894007205963,-0.9789241085236565,higher value → lower Big-Move probability,Market / Technical
-2,stock_vol_20d,0.18925420939922333,0.5102772266542188,higher value → higher Big-Move probability,Market / Technical
-3,net_income,0.1140281930565834,-0.2969033390836989,higher value → lower Big-Move probability,Fundamental
-4,equity,0.07087256759405136,-0.293528871051743,higher value → lower Big-Move probability,Fundamental
-5,gross_profit,0.061097778379917145,-0.19852469008758633,higher value → lower Big-Move probability,Interaction / Seasonality
-6,net_margin,0.05700352415442467,-0.158521941563043,higher value → lower Big-Move probability,Fundamental
-7,spy_momentum_20d,0.05288675054907799,-0.7624548278975842,higher value → lower Big-Move probability,Market / Technical
-8,etf_relative_strength_20d,0.04769497364759445,0.9302664110609775,higher value → higher Big-Move probability,Market / Technical
-9,relative_strength_60d,0.045408669859170914,0.6083977867812518,higher value → higher Big-Move probability,Market / Technical
-10,sgna,0.04035422205924988,-0.29364503410427195,higher value → lower Big-Move probability,Interaction / Seasonality
-11,etf_momentum_60d,0.03686204552650452,-0.3242914476378067,higher value → lower Big-Move probability,Market / Technical
-12,pre_event_runup_10d,0.03255005553364754,-0.30627348389342485,higher value → lower Big-Move probability,Interaction / Seasonality
-13,sgna_change_yoy,0.031121104955673218,-0.29358882246670354,higher value → lower Big-Move probability,Interaction / Seasonality
-14,log_dollar_volume_20d,0.029204370453953743,-0.11996531353647455,higher value → lower Big-Move probability,Market / Technical
-15,gross_margin_change_yoy,0.02915014699101448,0.2344025364786547,higher value → higher Big-Move probability,Fundamental
-16,revenue_change_yoy,0.028433337807655334,0.07238879729620379,weak/mixed directional effect,Fundamental
-17,etf_relative_strength_60d,0.02815067209303379,0.8641991211454458,higher value → higher Big-Move probability,Market / Technical
-18,pre_event_runup_60d,0.025476448237895966,0.565374206198645,higher value → higher Big-Move probability,Interaction / Seasonality
-19,inventory_to_equity,0.023744307458400726,0.46235517734972825,higher value → higher Big-Move probability,Fundamental
-20,etf_vol_20d,0.02193589322268963,-0.7368175173077542,higher value → lower Big-Move probability,Market / Technical
-21,sentiment_polarity,0.021894006058573723,-0.897011276096602,higher value → lower Big-Move probability,Text / NLP
-22,filing_month,0.021401269361376762,0.17874453580651192,higher value → higher Big-Move probability,Interaction / Seasonality
-23,negative_count_total,0.021102983504533768,0.8906674480999482,higher value → higher Big-Move probability,Text / NLP
-24,avg_text_score,0.02073889970779419,0.8931124309217822,higher value → higher Big-Move probability,Text / NLP
-25,net_income_change_qoq,0.019718104973435402,0.30939313323270096,higher value → higher Big-Move probability,Fundamental
-26,turnover_20d,0.019642207771539688,0.12962108951447757,higher value → higher Big-Move probability,Market / Technical
-27,spy_momentum_60d,0.019392799586057663,-0.7297538088157353,higher value → lower Big-Move probability,Market / Technical
-28,pre_event_runup_5d,0.0184688288718462,0.17602468510392677,higher value → higher Big-Move probability,Interaction / Seasonality
-29,inventory,0.01791216991841793,-0.4411455428550036,higher value → lower Big-Move probability,Fundamental
-30,score_std_mean,0.016582071781158447,0.43106171335055565,higher value → higher Big-Move probability,Text / NLP
-31,debt_to_gross_profit,0.01636173576116562,-0.16105005437187642,higher value → lower Big-Move probability,Fundamental
-32,revenue_change_qoq,0.01547836884856224,-0.12716484438270495,higher value → lower Big-Move probability,Fundamental
-33,inventory_change_yoy,0.014867686666548252,-0.24165220348340669,higher value → lower Big-Move probability,Fundamental
-34,sales_inventory,0.013149647042155266,0.1023113652207999,higher value → higher Big-Move probability,Fundamental
-35,num_units_total,0.013110789470374584,0.8231598640747239,higher value → higher Big-Move probability,Text / NLP
-36,positive_ratio_form_z,0.012918245047330856,-0.8665470179563716,higher value → lower Big-Move probability,Text / NLP
-37,positive_ratio,0.012843720614910126,-0.836728562827254,higher value → lower Big-Move probability,Text / NLP
-38,net_income_change_yoy,0.012687680311501026,0.06793699376591979,weak/mixed directional effect,Fundamental
-39,positive_count_total,0.012364184483885765,0.10488507516222563,higher value → higher Big-Move probability,Text / NLP
-40,neutral_count_total,0.011313328519463539,0.7683987937561275,higher value → higher Big-Move probability,Text / NLP
-41,score_std_max_form_z,0.011188166216015816,-0.8151647590523509,higher value → lower Big-Move probability,Text / NLP
-42,relative_strength_20d,0.011159262619912624,0.17421127298837674,higher value → higher Big-Move probability,Market / Technical
-43,units_per_section,0.010992084629833698,0.46140993125814234,higher value → higher Big-Move probability,Text / NLP
-44,score_std_max,0.010884805582463741,-0.5086505142371606,higher value → lower Big-Move probability,Text / NLP
-45,debt,0.010087953880429268,-0.3889670183589302,higher value → lower Big-Move probability,Fundamental
-46,sgna_change_qoq,0.010032416321337223,0.28018836232136407,higher value → higher Big-Move probability,Interaction / Seasonality
-47,cogs_margin,0.00990067794919014,0.3700589144566233,higher value → higher Big-Move probability,Fundamental
-48,num_units_total_form_z,0.009745464660227299,0.9111677062730582,higher value → higher Big-Move probability,Text / NLP
-49,stock_momentum_60d,0.009692810475826263,0.6248600116503346,higher value → higher Big-Move probability,Market / Technical
-50,spy_vol_20d,0.009263657033443451,-0.14167066438374487,higher value → lower Big-Move probability,Market / Technical
-51,sentiment_change_qoq,0.009226525202393532,0.5379721938339173,higher value → higher Big-Move probability,Text / NLP
-52,gross_margin,0.007984024472534657,-0.24046968720801776,higher value → lower Big-Move probability,Fundamental
-53,margin_surprise_proxy,0.007898930460214615,0.16284842904955898,higher value → higher Big-Move probability,Fundamental
-54,sentiment_polarity_form_z,0.0075206030160188675,-0.8698525034257852,higher value → lower Big-Move probability,Text / NLP
-55,neutral_ratio,0.006427672225981951,-0.5233995266068162,higher value → lower Big-Move probability,Text / NLP
-56,stock_momentum_20d,0.005789616610854864,-0.1329784998363576,higher value → lower Big-Move probability,Market / Technical
-57,score_std_mean_form_z,0.005707629024982452,-0.2990333293288743,higher value → lower Big-Move probability,Text / NLP
-58,stock_20d_excess_return,0.005212695803493261,0.06168128126366673,weak/mixed directional effect,Market / Technical
-59,negative_ratio,0.005135596729815006,0.880745808592194,higher value → higher Big-Move probability,Text / NLP
-60,units_per_section_form_z,0.004926811438053846,0.6599133585426564,higher value → higher Big-Move probability,Text / NLP
-61,sgna_margin,0.004814534913748503,0.07506797489642768,weak/mixed directional effect,Fundamental
-62,equity_to_assets_proxy,0.004300692584365606,-0.06296844489727513,weak/mixed directional effect,Fundamental
-63,debt_to_assets_proxy,0.003573731752112508,0.14986292949378865,higher value → higher Big-Move probability,Fundamental
-64,inventory_change_qoq,0.003270029090344906,0.5118884243492856,higher value → higher Big-Move probability,Fundamental
-65,gross_profit_margin,0.0027885509189218283,-0.27283793961673997,higher value → lower Big-Move probability,Fundamental
-66,negative_ratio_form_z,0.0026142520364373922,0.33384340796485124,higher value → higher Big-Move probability,Text / NLP
-67,neutral_ratio_form_z,0.0021430207416415215,0.5833829230087684,higher value → higher Big-Move probability,Text / NLP
-68,section_count_form_z,0.0011417686473578215,0.6308392971806945,higher value → higher Big-Move probability,Text / NLP
-69,section_count,0.0002648477675393224,0.024172731374509638,weak/mixed directional effect,Text / NLP
+1,distance_to_52w_high,0.2150307446718216,-0.9727381916691041,higher value → lower Big-Move probability,Market / Technical
+2,stock_vol_20d,0.20167279243469238,0.5132704648886319,higher value → higher Big-Move probability,Market / Technical
+3,net_income,0.11708306521177292,-0.3138494636075054,higher value → lower Big-Move probability,Fundamental
+4,equity,0.08457452803850174,-0.2685849073162529,higher value → lower Big-Move probability,Fundamental
+5,spy_momentum_20d,0.06435450166463852,-0.765410312914832,higher value → lower Big-Move probability,Market / Technical
+6,gross_profit,0.06412937492132187,-0.2040247607337112,higher value → lower Big-Move probability,Interaction / Seasonality
+7,net_margin,0.05883358418941498,-0.15172566565964354,higher value → lower Big-Move probability,Fundamental
+8,log_dollar_volume_20d,0.05240800231695175,-0.19469371702652843,higher value → lower Big-Move probability,Market / Technical
+9,revenue_change_yoy,0.0491209402680397,0.13983338141792265,higher value → higher Big-Move probability,Fundamental
+10,filing_month,0.03605545684695244,0.2889633500899226,higher value → higher Big-Move probability,Interaction / Seasonality
+11,turnover_20d,0.036025192588567734,0.024314562026791723,weak/mixed directional effect,Market / Technical
+12,sgna,0.034269459545612335,-0.21752520556635735,higher value → lower Big-Move probability,Interaction / Seasonality
+13,etf_relative_strength_60d,0.0299436803907156,0.8898921964351123,higher value → higher Big-Move probability,Market / Technical
+14,etf_relative_strength_20d,0.02622685581445694,0.8324852076802335,higher value → higher Big-Move probability,Market / Technical
+15,gross_margin_change_yoy,0.02516043744981289,0.21001211216087484,higher value → higher Big-Move probability,Fundamental
+16,relative_strength_60d,0.025034857913851738,0.6380628054159116,higher value → higher Big-Move probability,Market / Technical
+17,num_units_total,0.023895982652902603,0.7136670845475098,higher value → higher Big-Move probability,Text / NLP
+18,net_income_change_qoq,0.022623451426625252,0.31412687436600967,higher value → higher Big-Move probability,Fundamental
+19,score_std_max_form_z,0.02141730487346649,-0.8302090379703573,higher value → lower Big-Move probability,Text / NLP
+20,negative_count_total,0.02140411175787449,0.888826997679317,higher value → higher Big-Move probability,Text / NLP
+21,pre_event_runup_60d,0.02071652188897133,0.5522986290787822,higher value → higher Big-Move probability,Interaction / Seasonality
+22,sgna_change_qoq,0.020243177190423012,0.7130213036046255,higher value → higher Big-Move probability,Interaction / Seasonality
+23,score_std_mean,0.01822979561984539,0.40694796041979203,higher value → higher Big-Move probability,Text / NLP
+24,etf_vol_20d,0.017735857516527176,-0.6999368622439216,higher value → lower Big-Move probability,Market / Technical
+25,inventory_change_yoy,0.01753956824541092,-0.3032809317648589,higher value → lower Big-Move probability,Fundamental
+26,sentiment_change_qoq,0.016920750960707664,0.7250595117654021,higher value → higher Big-Move probability,Text / NLP
+27,inventory_to_equity,0.016697198152542114,0.2766223504882462,higher value → higher Big-Move probability,Fundamental
+28,sentiment_polarity,0.016638176515698433,-0.9025232550250492,higher value → lower Big-Move probability,Text / NLP
+29,etf_momentum_60d,0.01643691211938858,-0.1397864788825269,higher value → lower Big-Move probability,Market / Technical
+30,pre_event_runup_10d,0.0163995660841465,-0.3021100362769376,higher value → lower Big-Move probability,Interaction / Seasonality
+31,spy_momentum_60d,0.01515154168009758,-0.7723606927705031,higher value → lower Big-Move probability,Market / Technical
+32,negative_ratio,0.015015135519206524,0.8351263847613678,higher value → higher Big-Move probability,Text / NLP
+33,neutral_count_total,0.014219221659004688,0.739126353712276,higher value → higher Big-Move probability,Text / NLP
+34,sgna_change_yoy,0.013303735293447971,0.11053866410207291,higher value → higher Big-Move probability,Interaction / Seasonality
+35,sales_inventory,0.013114388100802898,-0.17373834688110015,higher value → lower Big-Move probability,Fundamental
+36,relative_strength_20d,0.012808194383978844,0.1642840795056099,higher value → higher Big-Move probability,Market / Technical
+37,cogs_margin,0.0113894147798419,0.2990894486048025,higher value → higher Big-Move probability,Fundamental
+38,score_std_max,0.011178041808307171,-0.48042530032271846,higher value → lower Big-Move probability,Text / NLP
+39,stock_momentum_60d,0.010853727348148823,0.5086704355198182,higher value → higher Big-Move probability,Market / Technical
+40,score_std_mean_form_z,0.010767253115773201,-0.1588468408723915,higher value → lower Big-Move probability,Text / NLP
+41,revenue_change_qoq,0.01049083098769188,-0.003183440897936851,weak/mixed directional effect,Fundamental
+42,units_per_section,0.010181388817727566,0.6598056124463202,higher value → higher Big-Move probability,Text / NLP
+43,gross_margin,0.010157044976949692,-0.05008226738802562,weak/mixed directional effect,Fundamental
+44,debt_to_gross_profit,0.009909636341035366,-0.11252820867250962,higher value → lower Big-Move probability,Fundamental
+45,inventory_change_qoq,0.009815246798098087,0.5381925944384804,higher value → higher Big-Move probability,Fundamental
+46,positive_count_total,0.00951200071722269,0.12962273575015024,higher value → higher Big-Move probability,Text / NLP
+47,margin_surprise_proxy,0.009155374020338058,0.21877558199143904,higher value → higher Big-Move probability,Fundamental
+48,debt,0.009027806110680103,-0.15313139316080498,higher value → lower Big-Move probability,Fundamental
+49,positive_ratio_form_z,0.00886353850364685,-0.780556543491638,higher value → lower Big-Move probability,Text / NLP
+50,avg_text_score,0.008786410093307495,0.8509765442437582,higher value → higher Big-Move probability,Text / NLP
+51,pre_event_runup_5d,0.008510859683156013,0.18132659974970627,higher value → higher Big-Move probability,Interaction / Seasonality
+52,inventory,0.007732348050922155,-0.4715013194085508,higher value → lower Big-Move probability,Fundamental
+53,debt_to_assets_proxy,0.006825772579759359,0.25079851935865016,higher value → higher Big-Move probability,Fundamental
+54,num_units_total_form_z,0.00639974744990468,0.43458121727958604,higher value → higher Big-Move probability,Text / NLP
+55,sentiment_polarity_form_z,0.006241472437977791,-0.7566880936911061,higher value → lower Big-Move probability,Text / NLP
+56,positive_ratio,0.006206095218658447,-0.5946767134217924,higher value → lower Big-Move probability,Text / NLP
+57,net_income_change_yoy,0.006161917001008987,-0.05060873269228543,weak/mixed directional effect,Fundamental
+58,section_count_form_z,0.005803739186376333,0.7118578874187568,higher value → higher Big-Move probability,Text / NLP
+59,units_per_section_form_z,0.005300846882164478,0.24872373637495512,higher value → higher Big-Move probability,Text / NLP
+60,sgna_margin,0.004463626071810722,0.059309072842852535,weak/mixed directional effect,Fundamental
+61,spy_vol_20d,0.004192065913230181,0.38806555920769387,higher value → higher Big-Move probability,Market / Technical
+62,equity_to_assets_proxy,0.004042839631438255,-0.2500825213441928,higher value → lower Big-Move probability,Fundamental
+63,neutral_ratio_form_z,0.003874783171340823,0.06390492955585998,weak/mixed directional effect,Text / NLP
+64,stock_20d_excess_return,0.0037703081034123898,0.143639423083692,higher value → higher Big-Move probability,Market / Technical
+65,negative_ratio_form_z,0.0037676154170185328,0.40665460094071154,higher value → higher Big-Move probability,Text / NLP
+66,stock_momentum_20d,0.003607723396271467,0.04880066469782867,weak/mixed directional effect,Market / Technical
+67,gross_profit_margin,0.003328341292217374,0.06476887318213141,weak/mixed directional effect,Fundamental
+68,neutral_ratio,0.0015247492119669914,0.06199219733232176,weak/mixed directional effect,Text / NLP
+69,section_count,7.261335122166201e-05,-0.3131441181025613,higher value → lower Big-Move probability,Text / NLP
 70,log_market_cap,0.0,,mixed/unclear,Market / Technical
