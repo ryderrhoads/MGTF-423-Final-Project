@@ -4,7 +4,7 @@ MGTF 423 Final Project — Ryder, UC San Diego Rady School of Management
 
 ## What this project does
 
-Every time a public company files a 10-K or 10-Q with the SEC, the market has to digest a dense package of financial statements and narrative disclosures. This project asks a simple question: **can we systematically predict the 20-day post-filing excess return (vs. SPY) using features derived from the filing itself, the company's financials, and the stock's recent market behavior?**
+Every time a public company files a 10-K or 10-Q with the SEC, the market has to digest a dense package of financial statements and narrative disclosures. This project asks a simple question: **can we systematically predict the 20-day post-filing excess return (vs. SPY with respect to beta) using features derived from the filing itself, the company's financials, and the stock's recent market behavior?**
 
 The universe is consumer-sector stocks (discretionary + staples). The approach combines three signal families — fundamental accounting ratios, market/technical state at filing time, and NLP-derived text features from FinBERT — into XGBoost models evaluated on three tasks with a strict chronological train/val/test split (70/10/20).
 
